@@ -1,0 +1,13 @@
+{
+  "itemGroup.crystal_craft": "Example Mod Tab",
+  "block.crystal_craft.example_block": "Example Block",
+  "item.crystal_craft.example_item": "Example Item",
+
+  "crystal_craft.configuration.title": "Crystal Craft Configs",
+  "crystal_craft.configuration.section.crystal_craft.common.toml": "Crystal Craft Configs",
+  "crystal_craft.configuration.section.crystal_craft.common.toml.title": "Crystal Craft Configs",
+  "crystal_craft.configuration.items": "Item List",
+  "crystal_craft.configuration.logDirtBlock": "Log Dirt Block",
+  "crystal_craft.configuration.magicNumberIntroduction": "Magic Number Text",
+  "crystal_craft.configuration.magicNumber": "Magic Number"
+}
