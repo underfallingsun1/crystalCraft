@@ -1,0 +1,22 @@
+{
+  "type": "integrated_machine:refining",
+  "fuel_consuming_speed": 2,
+  "main_output": {
+    "count": 15,
+    "id": "integrated_machine:steel_ingot"
+  },
+  "required_temperature": 1000,
+  "requirements": [
+    {
+      "count": 2,
+      "ingredient": {
+        "tag": "c:storage_blocks/iron"
+      }
+    }
+  ],
+  "sub_output": {
+    "count": 2,
+    "id": "integrated_machine:steel_ingot"
+  },
+  "sub_output_chance": 5000
+}

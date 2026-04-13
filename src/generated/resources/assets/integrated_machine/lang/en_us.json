@@ -1,0 +1,13 @@
+{
+  "block.integrated_machine.refining_block": "Refining Furnace",
+  "gui.refining_furnace.tip.fuel": "Fuel: %1$s / %2$s (%3$s %%)",
+  "gui.refining_furnace.tip.temperature": "Temperature: %1$sK / %2$sK",
+  "gui.refining_furnace.title": "Refining Furnace",
+  "item.integrated_machine.crystallized_ingot": "Crystallized Ingot",
+  "item.integrated_machine.end_ingot": "End Ingot",
+  "item.integrated_machine.extreme_ingot": "Extreme Ingot",
+  "item.integrated_machine.powered_ingot": "Powered Ingot",
+  "item.integrated_machine.shining_ingot": "Shining Ingot",
+  "item.integrated_machine.steel_ingot": "Steel Ingot",
+  "tab.integrated_machine.title": "Integrated Machine"
+}

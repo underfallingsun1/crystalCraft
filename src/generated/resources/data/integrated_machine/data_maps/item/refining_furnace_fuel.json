@@ -1,0 +1,25 @@
+{
+  "values": {
+    "minecraft:blaze_powder": {
+      "fuel": 150,
+      "lift_temperature_to": 600
+    },
+    "minecraft:blaze_rod": {
+      "fuel": 300,
+      "lift_temperature_to": 600
+    },
+    "minecraft:charcoal": {
+      "fuel": 640
+    },
+    "minecraft:coal": {
+      "fuel": 800
+    },
+    "minecraft:coal_block": {
+      "fuel": 8000
+    },
+    "minecraft:lava_bucket": {
+      "fuel": 3000,
+      "lift_temperature_to": 1200
+    }
+  }
+}

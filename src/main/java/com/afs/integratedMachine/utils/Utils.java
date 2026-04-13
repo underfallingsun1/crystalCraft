@@ -1,10 +1,27 @@
 package com.afs.integratedMachine.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.items.IItemHandler;
+
+import java.util.List;
 
 public class Utils {
-    public static final String MODID = "integrated_machine";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+    public static ResourceLocation modLoc(String path){
+        return ResourceLocation.fromNamespaceAndPath(Meta.MODID, path);
+    }
 
+    public static void applyItem(List<ItemStack> stacks, IItemHandler handler){
+        for(ItemStack stack: stacks){
+            for(int i = 0; i < handler.getSlots(); i++){
+                stack = handler.insertItem(i, stack, false);
+                if(stack.isEmpty()){
+                    break;
+                }
+            }
+            if(!stack.isEmpty()){
+                Meta.LOGGER.warn("Item can not inject!Item:{}, Remain:{}", stack.getItem(), stack.getCount());
+            }
+        }
+    }
 }

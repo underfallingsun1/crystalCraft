@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:obsidians"
+    },
+    "B": {
+      "item": "minecraft:blast_furnace"
+    },
+    "C": {
+      "item": "minecraft:smooth_stone"
+    },
+    "D": {
+      "tag": "c:storage_blocks/iron"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "CBC",
+    "DCD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "integrated_machine:refining_block"
+  }
+}
