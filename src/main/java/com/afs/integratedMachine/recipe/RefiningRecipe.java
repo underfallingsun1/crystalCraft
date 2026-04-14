@@ -12,9 +12,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -23,7 +21,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RefiningRecipe extends AbstractSimpleItemRecipe implements IMachineRecipe<RefiningFurnaceBlockEntity> {
+public class RefiningRecipe extends AbstractSimpleItemRecipe implements IMachineRecipe<RefiningFurnaceBlockEntity, SimpleItemInput> {
     private final List<IngredientWithCount> requirements;
     private final ItemStack mainOutput;
     private final ItemStack subOutput;
@@ -68,14 +66,14 @@ public class RefiningRecipe extends AbstractSimpleItemRecipe implements IMachine
 
     @Override
     public boolean matches(SimpleItemInput input, Level level) {
-        int m = input.size(), n = requirements.size();
+        int m = input.size();
         int[] count = new int[m];
         for(int i = 0;i < m;i ++){
             count[i] = input.getItem(i).getCount();
         }
         for(IngredientWithCount requirement: requirements){
             int required = requirement.count();
-            for(int i = 0;i < n;i ++){
+            for(int i = 0;i < m;i ++){
                 if(requirement.test(input.getItem(i))){
                     int consumed = Math.min(required, count[i]);
                     required -= consumed;
@@ -127,7 +125,7 @@ public class RefiningRecipe extends AbstractSimpleItemRecipe implements IMachine
     }
 
     @Override
-    public List<ItemStack> getItemOutput(RecipeInput input, RefiningFurnaceBlockEntity be){
+    public List<ItemStack> getItemOutput(SimpleItemInput input, RefiningFurnaceBlockEntity be){
         List<ItemStack> result = new ArrayList<>();
         if(mainOutput != ItemStack.EMPTY){
             result.add(mainOutput.copy());

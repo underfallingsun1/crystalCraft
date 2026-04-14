@@ -6,6 +6,7 @@ import com.afs.integratedMachine.item.IMItems;
 import com.afs.integratedMachine.utils.Utils;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 
 public class RefiningRecipeSubProvider {
@@ -22,5 +23,13 @@ public class RefiningRecipeSubProvider {
                 .setFuelSpeed(2)
                 .unlockedBy("has_the_item", AdvancementUtils.hasItem(Tags.Items.STORAGE_BLOCKS_IRON))
                 .save(output, Utils.modLoc("refining_steel"));
+        new RefiningRecipeBuilder(new ItemStack(Items.SMOOTH_STONE, 4))
+                .setSubOutput(new ItemStack(Items.FLINT, 2), 0.25)
+                .addItem(Tags.Items.COBBLESTONES, 1)
+                .addItem(Tags.Items.STONES, 1)
+                .addItem(Tags.Items.GRAVELS, 1)
+                .setTemperature(500)
+                .unlockedBy("has_the_item", AdvancementUtils.hasItem(Items.SMOOTH_STONE))
+                .save(output, Utils.modLoc("refining_smooth_stone"));
     }
 }

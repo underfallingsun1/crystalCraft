@@ -9,7 +9,6 @@ import com.afs.integratedMachine.recipe.RefiningRecipe;
 import com.afs.integratedMachine.recipe.input.SimpleItemInput;
 import com.afs.integratedMachine.utils.CombinedItemHandle;
 import com.afs.integratedMachine.utils.LangComps;
-import com.afs.integratedMachine.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -268,7 +267,7 @@ public class RefiningFurnaceBlockEntity extends BlockEntity {
 
     private void burn(Level level){
         if(temperature < recipeRequiredTemperature){
-            if(progress > 0) progress -= (recipeRequiredTemperature - temperature) / 300;
+            if(progress > 0) progress -= (recipeRequiredTemperature - temperature) / 300 + 1;
             if(progress < 0) progress = 0;
         }
         if(storedFuel > 0){
@@ -280,8 +279,9 @@ public class RefiningFurnaceBlockEntity extends BlockEntity {
             }
             else{
                 int bonus = (temperature - recipeRequiredTemperature) / 100;
-                storedFuel -= recipeFuelSpeed * (1 + bonus / 2);
-                progress += bonus;
+                int overTemperaturePunishment = temperature > getMaxTemperature()? 4 + 2 * (temperature - getMaxTemperature()) / 50: 1;
+                storedFuel -= recipeFuelSpeed * (1 + bonus / 2) * overTemperaturePunishment;
+                progress += bonus + 1;
                 if(progress >= MAX_PROGRESS){
                     addResultToOutput();
                     onProgress = false;
@@ -293,7 +293,7 @@ public class RefiningFurnaceBlockEntity extends BlockEntity {
         }
         else {
             if(level.getGameTime() % 5 == 0){
-                temperature -= (temperature - BASE_TEMPERATURE) / 3 + 1;
+                temperature -= (temperature - BASE_TEMPERATURE) / 50 + 1;
                 if(temperature < BASE_TEMPERATURE) temperature = BASE_TEMPERATURE;
             }
         }
@@ -315,6 +315,22 @@ public class RefiningFurnaceBlockEntity extends BlockEntity {
             }
         }
         recipeResultList.clear();
+    }
+
+    public ItemStackHandler getItems() {
+        return items;
+    }
+
+    public CombinedItemHandle getInputSlots() {
+        return inputSlots;
+    }
+
+    public CombinedItemHandle getOutputSlots() {
+        return outputSlots;
+    }
+
+    public CombinedItemHandle getFuelSlots() {
+        return fuelSlots;
     }
 
     public class MenuGetter implements MenuProvider{

@@ -12,18 +12,18 @@ import net.neoforged.neoforge.items.IItemHandler;
 
 import java.util.List;
 
-public interface IMachineRecipe<T extends BlockEntity> {
+public interface IMachineRecipe<T extends BlockEntity, I extends RecipeInput> {
     List<ItemStack> takeItem(IItemHandler handler, int repeat);
 
-    default List<ItemStack> getItemOutput(RecipeInput input, T entity){
+    default List<ItemStack> getItemOutput(I input, T entity){
         return List.of();
     }
 
-    default List<FluidStack> getFluidStack(RecipeInput input ,T entity){
+    default List<FluidStack> getFluidStack(I input ,T entity){
         return List.of();
     }
 
-    default RecipeEvent getRecipeEvent(RecipeInput input, T entity){
+    default RecipeEvent getRecipeEvent(I input, T entity){
         return RecipeEvent.EMPTY;
     }
 
