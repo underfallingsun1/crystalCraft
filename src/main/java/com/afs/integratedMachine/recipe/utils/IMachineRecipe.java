@@ -19,7 +19,7 @@ public interface IMachineRecipe<T extends BlockEntity, I extends RecipeInput> {
         return List.of();
     }
 
-    default List<FluidStack> getFluidStack(I input ,T entity){
+    default List<FluidStack> getFluidOutput(I input ,T entity){
         return List.of();
     }
 
@@ -48,9 +48,9 @@ public interface IMachineRecipe<T extends BlockEntity, I extends RecipeInput> {
     }
 
     @FunctionalInterface
-    interface RecipeEvent{
-        void run(Level level, BlockPos pos);
+    interface RecipeEvent<T extends BlockEntity>{
+        void run(Level level, BlockPos pos, T be);
 
-        RecipeEvent EMPTY = (level, pos) -> {};
+        RecipeEvent<? extends BlockEntity> EMPTY = (level, pos, be) -> {};
     }
 }

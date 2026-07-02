@@ -10,14 +10,6 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 public class IMCapabilityProviders {
     @SubscribeEvent
     public static void RegisterCapabilities(RegisterCapabilitiesEvent e){
-        e.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                IMBlockEntityTypes.REFINING_FURNACE_BE.get(),
-                (be, side) -> switch (side){
-                    case UP -> be.getInputSlots();
-                    case DOWN -> be.getOutputSlots();
-                    case EAST, WEST, SOUTH, NORTH -> be.getFuelSlots();
-                }
-        );
+        
     }
 }

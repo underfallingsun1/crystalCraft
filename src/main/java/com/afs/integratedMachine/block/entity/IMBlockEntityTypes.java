@@ -13,9 +13,4 @@ public class IMBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> BE_TYPES = DeferredRegister.create(
             Registries.BLOCK_ENTITY_TYPE, Meta.MODID
     );
-
-    public static final Supplier<BlockEntityType<RefiningFurnaceBlockEntity>> REFINING_FURNACE_BE =
-            BE_TYPES.register("refining_furnace",
-                    () -> BlockEntityType.Builder.of(RefiningFurnaceBlockEntity::new, IMBlocks.REFINING_FURNACE.get())
-                            .build(null));
 }

@@ -27,6 +27,5 @@ public class ZhCn extends LanguageProvider {
         add(IMItems.EXTREME_INGOT.get(), "终极金属锭");
         add(IMItems.STEEL_INGOT.get(), "钢锭");
 
-        add(IMBlocks.REFINING_FURNACE.get(), "精炼炉");
     }
 }

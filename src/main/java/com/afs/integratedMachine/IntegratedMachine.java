@@ -5,12 +5,18 @@ import com.afs.integratedMachine.block.entity.IMBlockEntityTypes;
 import com.afs.integratedMachine.item.IMItems;
 import com.afs.integratedMachine.gui.menu.IMMenus;
 import com.afs.integratedMachine.recipe.IMRecipes;
+import com.afs.integratedMachine.recipe.utils.inputEntry.AbstractInputEntry;
+import com.afs.integratedMachine.recipe.utils.outputEntry.AbstractOutputEntry;
 import com.afs.integratedMachine.utils.Meta;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 
 @Mod(Meta.MODID)
+@EventBusSubscriber(modid = Meta.MODID)
 public class IntegratedMachine {
     public IntegratedMachine(IEventBus bus, ModContainer container){
         IMItems.ITEMS.register(bus);
@@ -21,6 +27,15 @@ public class IntegratedMachine {
         IMMenus.MENUS.register(bus);
         IMRecipes.RECIPES.register(bus);
         IMRecipes.SERIALIZERS.register(bus);
+        AbstractInputEntry.INPUT_TYPES.register(bus);
+        AbstractOutputEntry.OUTPUT_TYPES.register(bus);
+
         Meta.LOGGER.info("mod integrated machine is loaded!");
+    }
+
+    @SubscribeEvent
+    public static void AddNewRegistries(NewRegistryEvent e){
+        e.register(AbstractInputEntry.INPUT_TYPE_REGISTRY);
+        e.register(AbstractOutputEntry.OUTPUT_TYPE_REGISTRY);
     }
 }

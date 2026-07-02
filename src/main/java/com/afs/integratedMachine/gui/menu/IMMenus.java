@@ -13,7 +13,4 @@ public class IMMenus {
             Registries.MENU, Meta.MODID
     );
 
-    public static final Supplier<MenuType<RefiningFurnaceMenu>> REFINING_FURNACE = MENUS.register(
-            "refining_furnace", () -> new MenuType<>(RefiningFurnaceMenu::new, FeatureFlags.DEFAULT_FLAGS)
-    );
 }

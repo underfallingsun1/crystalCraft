@@ -19,17 +19,6 @@ public class BlockModels extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        //refining furnace
-        ModelFile refiningFurnace = simpleMachineModel("refining_furnace", modBlockLoc("refining_furnace"));
-        ModelFile refiningFurnaceLit = simpleMachineModel("refining_furnace_lit", modBlockLoc("refining_furnace"), "_lit");
-        VariantBlockStateBuilder refiningFurnaceBlockStates = getVariantBuilder(IMBlocks.REFINING_FURNACE.get());
-        refiningFurnaceBlockStates.forAllStates(
-                state -> ConfiguredModel.builder()
-                        .modelFile(state.getValue(BlockStateProperties.LIT)?refiningFurnaceLit:refiningFurnace)
-                        .rotationY(((int)state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
-                        .build()
-        );
-        simpleBlockItem(IMBlocks.REFINING_FURNACE.get(), refiningFurnace);
     }
 
     private ResourceLocation modBlockLoc(String path){

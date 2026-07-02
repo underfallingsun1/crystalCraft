@@ -10,6 +10,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class IMScreens {
     @SubscribeEvent
     public static void registerMenuScreen(RegisterMenuScreensEvent e){
-        e.register(IMMenus.REFINING_FURNACE.get(), RefiningFurnaceScreen::new);
+
     }
 }

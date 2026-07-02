@@ -20,6 +20,6 @@ public class BlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        dropSelf(IMBlocks.REFINING_FURNACE.get());
+
     }
 }

@@ -18,6 +18,6 @@ public class BTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IMBlocks.REFINING_FURNACE.get());
+
     }
 }

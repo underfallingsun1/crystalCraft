@@ -27,6 +27,5 @@ public class EnUs extends LanguageProvider {
         add(IMItems.EXTREME_INGOT.get(), "Extreme Ingot");
         add(IMItems.STEEL_INGOT.get(), "Steel Ingot");
 
-        add(IMBlocks.REFINING_FURNACE.get(), "Refining Furnace");
     }
 }

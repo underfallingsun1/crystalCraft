@@ -12,14 +12,9 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = Meta.MODID)
 public class IMDataMaps {
-    public static final DataMapType<Item, RefiningFurnaceFuel> REFINING_FURNACE_FUEL = DataMapType.builder(
-            Utils.modLoc("refining_furnace_fuel"),
-            Registries.ITEM,
-            RefiningFurnaceFuel.CODEC
-    ).synced(RefiningFurnaceFuel.CODEC, true).build();
 
     @SubscribeEvent
     public static void register(RegisterDataMapTypesEvent e){
-        e.register(REFINING_FURNACE_FUEL);
+
     }
 }

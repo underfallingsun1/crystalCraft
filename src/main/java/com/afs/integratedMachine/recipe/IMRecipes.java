@@ -14,13 +14,7 @@ public class IMRecipes {
             Registries.RECIPE_TYPE, Meta.MODID
     );
 
-    public static final DeferredHolder<RecipeType<?>, RecipeType<RefiningRecipe>> REFINING_RECIPE =
-            RECIPES.register("refining", () -> RecipeType.simple(Utils.modLoc("refining")));
-
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(
             Registries.RECIPE_SERIALIZER, Meta.MODID
     );
-
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<RefiningRecipe>> REFINING_SERIALIZER =
-            SERIALIZERS.register("refining", () -> new SimpleRecipeSerializer<>(RefiningRecipe.CODEC, RefiningRecipe.STREAM_CODEC));
 }
