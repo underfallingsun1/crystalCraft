@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "com.afs.integratedMachine.mixin",
+  "mixins": [
+    "BlockChangeEvent"
+  ]
+}

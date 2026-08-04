@@ -1,10 +1,16 @@
 package com.afs.integratedMachine.utils;
 
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Utils {
     public static ResourceLocation modLoc(String path){
@@ -33,5 +39,20 @@ public class Utils {
                 Meta.LOGGER.warn("Item can not inject!Item:{}, Remain:{}", stack.getItem(), stack.getCount());
             }
         }
+    }
+
+
+    public static final Map<ResourceKey<Level>, Level> levelCache = new HashMap<>();
+
+    public static Level getLevelByDimension(ResourceKey<Level> dimension){
+        return levelCache.computeIfAbsent(dimension, dim -> {
+            MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+            if (server != null) {
+                return server.getLevel(dim);
+            }
+            else{
+                throw new IllegalArgumentException("unknown level: " + dimension.location());
+            }
+        });
     }
 }

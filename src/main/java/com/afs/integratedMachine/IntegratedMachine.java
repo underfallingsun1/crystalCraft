@@ -2,6 +2,7 @@ package com.afs.integratedMachine;
 
 import com.afs.integratedMachine.block.IMBlocks;
 import com.afs.integratedMachine.block.entity.IMBlockEntityTypes;
+import com.afs.integratedMachine.common_registries.IMDataAttachments;
 import com.afs.integratedMachine.item.IMItems;
 import com.afs.integratedMachine.gui.menu.IMMenus;
 import com.afs.integratedMachine.recipe.IMRecipes;
@@ -29,6 +30,7 @@ public class IntegratedMachine {
         IMRecipes.SERIALIZERS.register(bus);
         AbstractInputEntry.INPUT_TYPES.register(bus);
         AbstractOutputEntry.OUTPUT_TYPES.register(bus);
+        IMDataAttachments.ATTACHMENT_TYPES.register(bus);
 
         Meta.LOGGER.info("mod integrated machine is loaded!");
     }

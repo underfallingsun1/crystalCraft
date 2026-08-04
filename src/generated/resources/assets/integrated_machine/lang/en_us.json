@@ -1,5 +1,4 @@
 {
-  "block.integrated_machine.refining_block": "Refining Furnace",
   "gui.refining_furnace.tip.fuel": "Fuel: %1$s / %2$s (%3$s %%)",
   "gui.refining_furnace.tip.temperature": "Temperature: %1$sK / %2$sK",
   "gui.refining_furnace.title": "Refining Furnace",

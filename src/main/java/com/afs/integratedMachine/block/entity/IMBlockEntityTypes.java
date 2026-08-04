@@ -13,4 +13,12 @@ public class IMBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> BE_TYPES = DeferredRegister.create(
             Registries.BLOCK_ENTITY_TYPE, Meta.MODID
     );
+
+    public static final Supplier<BlockEntityType<CompartmentControllerBlockEntity>> COMPARTMENT_CONTROLLER =
+            BE_TYPES.register("compartment_controller", ()->
+                    BlockEntityType.Builder.of(
+                            CompartmentControllerBlockEntity::new,
+                            IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get()
+                            )
+                            .build(null));
 }

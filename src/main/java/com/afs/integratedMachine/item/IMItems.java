@@ -24,6 +24,8 @@ public class IMItems {
     public static final DeferredItem<Item> EXTREME_INGOT = ITEMS.registerSimpleItem("extreme_ingot");
     public static final DeferredItem<Item> STEEL_INGOT = ITEMS.registerSimpleItem("steel_ingot");
 
+    public static final DeferredItem<BlockItem> BASIC_COMPARTMENT_CONTROLLER = ITEMS.registerSimpleBlockItem(IMBlocks.BASIC_COMPARTMENT_CONTROLLER);
+
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Meta.MODID);
 
     public static final Supplier<CreativeModeTab> IM_TAB = TABS.register("integrated_machine", () ->
