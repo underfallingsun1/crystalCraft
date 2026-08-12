@@ -14,6 +14,8 @@ public class CompartmentEntry implements CompartmentGetter{
     private final Compartment compartment;
     private final int id;
 
+    public static final CompartmentEntry EMPTY = new CompartmentEntry(null, -1);
+
     @Override
     public Compartment get() {
         return compartment;
@@ -42,14 +44,21 @@ public class CompartmentEntry implements CompartmentGetter{
                     CompartmentEntry::new
             );
 
+
     public CompoundTag save(HolderLookup.Provider registry){
         CompoundTag tag = new CompoundTag();
+        if(this == EMPTY){
+            return tag;
+        }
         tag.put("compartment", compartment.serializeNBT(registry));
         tag.putInt("id", id);
         return tag;
     }
 
     public static CompartmentEntry load(CompoundTag tag, HolderLookup.Provider registry){
+        if(!tag.contains("id")){
+            return EMPTY;
+        }
         int id = tag.getInt("id");
         CompoundTag compartmentTag = tag.getCompound("compartment");
         Compartment compartment = new Compartment(null, new HashSet<>(), new HashSet<>(), new HashSet<>());

@@ -6,7 +6,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -25,6 +24,18 @@ public class CompartmentRef implements CompartmentGetter{
     private Level level = null;
     private Compartment cache = null;
 
+    public static final CompartmentRef EMPTY = new CompartmentRef(null, new ChunkPos(0, 0), -1){
+        @Override
+        public Compartment get() {
+            return null;
+        }
+
+        @Override
+        public boolean isBroken() {
+            return false;
+        }
+    };
+
     public CompartmentRef(ResourceKey<Level> dimension, BlockPos pos, int id){
         this(dimension, new ChunkPos(pos), id);
     }
@@ -37,6 +48,9 @@ public class CompartmentRef implements CompartmentGetter{
 
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag();
+        if(this == EMPTY){
+            return tag;
+        }
         tag.putString("dimension", dimension.location().toString());
         tag.putInt("id", id);
         tag.putInt("x", pos.x);
@@ -44,7 +58,10 @@ public class CompartmentRef implements CompartmentGetter{
         return tag;
     }
 
-    public static CompartmentRef load(CompoundTag nbt, HolderLookup.Provider registry) {
+    public static CompartmentRef load(CompoundTag nbt) {
+        if(!nbt.contains("id")){
+            return EMPTY;
+        }
         int id = nbt.getInt("id");
         ChunkPos pos = new ChunkPos(nbt.getInt("x"), nbt.getInt("z"));
         ResourceKey<Level> dimension = ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(nbt.getString("dimension")));

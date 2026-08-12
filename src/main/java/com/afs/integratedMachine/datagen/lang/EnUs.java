@@ -16,10 +16,6 @@ public class EnUs extends LanguageProvider {
     protected void addTranslations() {
         add(TAB_TITLE.key(), "Integrated Machine");
 
-        add(REFINING_FURNACE_TITLE.key(), "Refining Furnace");
-        add(REFINING_FURNACE_FUEL_TIP.key(), "Fuel: %1$s / %2$s (%3$s %%)");
-        add(REFINING_FURNACE_TEMPERATURE_TIP.key(), "Temperature: %1$sK / %2$sK");
-
         add(IMItems.POWERED_INGOT.get(), "Powered Ingot");
         add(IMItems.SHINING_INGOT.get(), "Shining Ingot");
         add(IMItems.END_INGOT.get(), "End Ingot");
@@ -27,5 +23,7 @@ public class EnUs extends LanguageProvider {
         add(IMItems.EXTREME_INGOT.get(), "Extreme Ingot");
         add(IMItems.STEEL_INGOT.get(), "Steel Ingot");
 
+        add(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get(), "Basic Compartment Controller");
+        add(IMBlocks.IRON_WALL.get(), "Iron Compartment Wall");
     }
 }

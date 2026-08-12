@@ -137,7 +137,7 @@ public class CompartmentList implements INBTSerializable<CompoundTag> {
         }
         ListTag refs = nbt.getList("refs", Tag.TAG_COMPOUND);
         for (Tag rt: refs){
-            ref.add(CompartmentRef.load((CompoundTag) rt, provider));
+            ref.add(CompartmentRef.load((CompoundTag) rt));
         }
         dirty = true;
     }

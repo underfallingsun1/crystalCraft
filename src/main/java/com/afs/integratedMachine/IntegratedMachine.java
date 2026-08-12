@@ -3,8 +3,9 @@ package com.afs.integratedMachine;
 import com.afs.integratedMachine.block.IMBlocks;
 import com.afs.integratedMachine.block.entity.IMBlockEntityTypes;
 import com.afs.integratedMachine.common_registries.IMDataAttachments;
+import com.afs.integratedMachine.compartment.property.CompartmentProperty;
 import com.afs.integratedMachine.item.IMItems;
-import com.afs.integratedMachine.gui.menu.IMMenus;
+import com.afs.integratedMachine.client.gui.menu.IMMenus;
 import com.afs.integratedMachine.recipe.IMRecipes;
 import com.afs.integratedMachine.recipe.utils.inputEntry.AbstractInputEntry;
 import com.afs.integratedMachine.recipe.utils.outputEntry.AbstractOutputEntry;
@@ -39,5 +40,6 @@ public class IntegratedMachine {
     public static void AddNewRegistries(NewRegistryEvent e){
         e.register(AbstractInputEntry.INPUT_TYPE_REGISTRY);
         e.register(AbstractOutputEntry.OUTPUT_TYPE_REGISTRY);
+        e.register(CompartmentProperty.COMPARTMENT_PROPERTY_REGISTRY);
     }
 }

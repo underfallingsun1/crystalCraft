@@ -1,7 +1,6 @@
 {
-  "gui.refining_furnace.tip.fuel": "燃值: %1$s / %2$s (%3$s %%)",
-  "gui.refining_furnace.tip.temperature": "温度: %1$sK / %2$sK",
-  "gui.refining_furnace.title": "精炼炉",
+  "block.integrated_machine.basic_compartment_controller": "仓室控制器(基础)",
+  "block.integrated_machine.iron_wall": "铁质墙壁",
   "item.integrated_machine.crystallized_ingot": "晶化金属锭",
   "item.integrated_machine.end_ingot": "末影金属锭",
   "item.integrated_machine.extreme_ingot": "终极金属锭",

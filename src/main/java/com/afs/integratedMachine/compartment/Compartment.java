@@ -115,7 +115,7 @@ public class Compartment implements INBTSerializable<CompoundTag> {
     }
 
     private static boolean isWallValid(Level level, BlockPos wallPos, BlockPos center){
-        return !level.getBlockState(wallPos).is(IMBlockTags.HATCH_CONTROLLER) || wallPos.equals(center);
+        return !level.getBlockState(wallPos).is(IMBlockTags.COMPARTMENT_CONTROLLER) || wallPos.equals(center);
     }
 
     private static boolean isBlockInArea(BlockPos center, BlockPos pos, int distance, int minY, int maxY){
@@ -128,7 +128,7 @@ public class Compartment implements INBTSerializable<CompoundTag> {
     }
 
     private static boolean isWall(Level level, BlockPos pos){
-        return level.getBlockState(pos).is(IMBlockTags.HATCH_WALL);
+        return level.getBlockState(pos).is(IMBlockTags.COMPARTMENT_WALL);
     }
 
     private static BlockPos[] getNeighbors(BlockPos pos){
@@ -163,7 +163,7 @@ public class Compartment implements INBTSerializable<CompoundTag> {
         BODY, WALL, CORNER, NONE, CONTROLLER
     }
 
-    public void addToChunk(Level level){
+    public CompartmentRef addToChunk(Level level){
         Set<ChunkAccess> chunks = new HashSet<>();
         ChunkAccess center = level.getChunk(controller);
         CompartmentList list = center.getData(IMDataAttachments.COMPARTMENTS);
@@ -193,6 +193,7 @@ public class Compartment implements INBTSerializable<CompoundTag> {
                 cList.addRef(ref);
             }
         }
+        return ref;
     }
 
     public void remove(Level level){

@@ -1,16 +1,17 @@
 package com.afs.integratedMachine.datagen.model;
 
 import com.afs.integratedMachine.block.IMBlocks;
+import com.afs.integratedMachine.block.utils.IMBlockStateProperties;
+import com.afs.integratedMachine.client.model.connectModel.ConnectPredicate;
+import com.afs.integratedMachine.datagen.model.builder.ConnectedModelBuilder;
 import com.afs.integratedMachine.utils.Meta;
+import com.afs.integratedMachine.utils.tags.IMBlockTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import java.util.Map;
 
 public class BlockModels extends BlockStateProvider {
     public BlockModels(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -19,19 +20,24 @@ public class BlockModels extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        simpleBlockWithItem(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get(),
+                cubeAll(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get()));
+        simpleBlockWithItem(IMBlocks.TEST_BLOCK.get(), cubeAll(IMBlocks.TEST_BLOCK.get()));
+
+        simpleBlockItem(IMBlocks.IRON_WALL.get(), models().cubeAll("iron_wall_all", modBlockLoc("iron_wall_all")));
+        simpleBlock(IMBlocks.IRON_WALL.get(), models().getBuilder("iron_wall")
+                .texture("particle", modBlockLoc("iron_wall_all"))
+                .texture("set", modBlockLoc("iron_wall"))
+                .ao(true)
+                .customLoader(ConnectedModelBuilder::new)
+                .addPredicates(ConnectPredicate.ofBlock(IMBlocks.IRON_WALL.get(), Map.of()))
+                .addPredicates(ConnectPredicate.ofTag(IMBlockTags.COMPARTMENT_INTERFACE, Map.of(IMBlockStateProperties.ACTIVE, true)))
+                .setTextureSet("set")
+                .end()
+        );
     }
 
     private ResourceLocation modBlockLoc(String path){
         return modLoc("block/" + path);
-    }
-
-    private ModelFile simpleMachineModel(String name, ResourceLocation path){
-        return simpleMachineModel(name, path, "");
-    }
-
-    private ModelFile simpleMachineModel(String name, ResourceLocation path, String suffix){
-        ResourceLocation sidePath = path.withSuffix("/side");
-        ResourceLocation facePath = path.withSuffix("/face" + suffix);
-        return models().cube(name, sidePath, sidePath, facePath, sidePath, sidePath, sidePath).texture("particle", sidePath);
     }
 }

@@ -15,6 +15,7 @@ public class IMBlockTags {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(namespace, id));
     }
 
-    public static final TagKey<Block> HATCH_WALL = create("hatch_wall");
-    public static final TagKey<Block> HATCH_CONTROLLER = create("hatch_controller");
+    public static final TagKey<Block> COMPARTMENT_WALL = create("compartment_wall");
+    public static final TagKey<Block> COMPARTMENT_CONTROLLER = create("compartment_controller");
+    public static final TagKey<Block> COMPARTMENT_INTERFACE = create("compartment_interface");
 }

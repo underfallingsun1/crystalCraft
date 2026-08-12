@@ -20,6 +20,7 @@ public class BlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-
+        dropSelf(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get());
+        dropSelf(IMBlocks.IRON_WALL.get());
     }
 }

@@ -8,9 +8,11 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
@@ -25,14 +27,25 @@ public class IMItems {
     public static final DeferredItem<Item> STEEL_INGOT = ITEMS.registerSimpleItem("steel_ingot");
 
     public static final DeferredItem<BlockItem> BASIC_COMPARTMENT_CONTROLLER = ITEMS.registerSimpleBlockItem(IMBlocks.BASIC_COMPARTMENT_CONTROLLER);
+    public static final DeferredItem<BlockItem> IRON_WALL = ITEMS.registerSimpleBlockItem(IMBlocks.IRON_WALL);
+
+    public static final DeferredItem<BlockItem> TEST_BLOCK = ITEMS.registerSimpleBlockItem(IMBlocks.TEST_BLOCK);
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Meta.MODID);
+
+    public static final List<DeferredHolder<Item, ?>> HIDDEN_ITEMS = List.of(
+            TEST_BLOCK
+    );
 
     public static final Supplier<CreativeModeTab> IM_TAB = TABS.register("integrated_machine", () ->
             CreativeModeTab.builder()
                     .displayItems(
                         (param, output) -> ITEMS.getEntries().forEach(
-                                holder -> output.accept(holder.get())
+                                holder -> {
+                                    if(!HIDDEN_ITEMS.contains(holder)){
+                                        output.accept(holder.get());
+                                    }
+                                }
                         )
                     )
                     .title(LangComps.TAB_TITLE.apply())

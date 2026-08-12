@@ -5,6 +5,7 @@ import com.afs.integratedMachine.utils.Meta;
 import com.afs.integratedMachine.utils.tags.IMBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -17,8 +18,13 @@ public class BTags extends BlockTagsProvider {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void addTags(HolderLookup.Provider provider) {
-        tag(IMBlockTags.HATCH_WALL).add(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get());
-        tag(IMBlockTags.HATCH_CONTROLLER).add(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get());
+        tag(IMBlockTags.COMPARTMENT_WALL).add(
+                IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get(),
+                IMBlocks.IRON_WALL.get());
+        tag(IMBlockTags.COMPARTMENT_CONTROLLER).add(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(IMBlocks.BASIC_COMPARTMENT_CONTROLLER.get());
+        tag(IMBlockTags.COMPARTMENT_INTERFACE).addTags(IMBlockTags.COMPARTMENT_CONTROLLER);
     }
 }

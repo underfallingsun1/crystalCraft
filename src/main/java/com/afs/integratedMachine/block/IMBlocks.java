@@ -16,6 +16,10 @@ import java.util.function.Supplier;
 public class IMBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Meta.MODID);
 
+    public static final DeferredBlock<Block> TEST_BLOCK = BLOCKS.registerBlock(
+            "test_block", Block::new, BlockBehaviour.Properties.of().noLootTable()
+    );
+
     public static final BlockBehaviour.Properties MACHINE_BLOCK_PROPERTY =
             BlockBehaviour.Properties.of().strength(4.0f, 8.0f)
                     .requiresCorrectToolForDrops()
@@ -25,6 +29,10 @@ public class IMBlocks {
 
     public static final DeferredBlock<CompartmentControllerBlock> BASIC_COMPARTMENT_CONTROLLER =
             BLOCKS.registerBlock("basic_compartment_controller", p -> new CompartmentControllerBlock(p, 64, 8), MACHINE_BLOCK_PROPERTY);
+
+    public static final DeferredBlock<Block> IRON_WALL = BLOCKS.registerBlock(
+            "iron_wall", Block::new, MACHINE_BLOCK_PROPERTY
+    );
 
     public static final DeferredRegister<MapCodec<? extends Block>> TYPES = DeferredRegister.create(
             Registries.BLOCK_TYPE, Meta.MODID

@@ -1,7 +1,6 @@
 {
-  "gui.refining_furnace.tip.fuel": "Fuel: %1$s / %2$s (%3$s %%)",
-  "gui.refining_furnace.tip.temperature": "Temperature: %1$sK / %2$sK",
-  "gui.refining_furnace.title": "Refining Furnace",
+  "block.integrated_machine.basic_compartment_controller": "Basic Compartment Controller",
+  "block.integrated_machine.iron_wall": "Iron Compartment Wall",
   "item.integrated_machine.crystallized_ingot": "Crystallized Ingot",
   "item.integrated_machine.end_ingot": "End Ingot",
   "item.integrated_machine.extreme_ingot": "Extreme Ingot",
